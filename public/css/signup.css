@@ -141,7 +141,7 @@ background-image: url(
    position: fixed;
    bottom: 50px;
    right: 0;
-   font-size: 28px;
+   font-size: 25px;
  }
 }
 @media screen and (max-width:572px){
@@ -158,12 +158,12 @@ background-image: url(
 @media screen and (max-width:427px){
  
  #back2Top {
-   width: 20px;
-   line-height: 20px;
+   width: 27px;
+   line-height: 27px;
    position: fixed;
    bottom: 50px;
    right: 0;
-   font-size: 20px;
+   font-size: 25px;
  }
  .navbar-nav .nav-item .nav-link {
    font-size: 18px;
@@ -180,12 +180,12 @@ background-image: url(
  }
  
  #back2Top {
-   width: 18px;
-   line-height: 18px;
+   width: 27px;
+   line-height: 27px;
    position: fixed;
    bottom: 50px;
    right: 0;
-   font-size: 20px;
+   font-size: 25px;
  }
 
 /* form css */
