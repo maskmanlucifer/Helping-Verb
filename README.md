@@ -4,7 +4,7 @@
     1. Knowing about on what tech-stack our batchmates , juniors and seniors are working on and 
        asking for help if needed.
     2. Having a timeline of where our seniors are working (Jobs, Internships).
-    3. Taking some inspiration projects done by our batchmates , juniors and seniors.
+    3. Taking some idea/inspiration from projects done by our batchmates , juniors and seniors.
     4. Contributing in projects and asking for guidance from seniors.
     5. Job/Referral opportunity posting by Alumni's on discuss platform (Still under crafting......)
     
@@ -34,6 +34,13 @@
           node app (entry js file)
        
 ### :wrench: Contributing:
-     If you have any idea to improve any functionality of our web-app or you want to add any new feature in our web app.
-     You can do that by making some good, valid Pull requests in our repository.
+     1. If you have any idea to improve any functionality of our web-app or you want to add any new feature in our web app.
+        You can do that by making some good, valid Pull requests in our repository.
+     2. You can report any bug by creating an issue.
+     3. Contribution step 
+        i) Fork the repository.
+        ii) Setup local codebase of forked repository (From installation step)
+        ii) Add new feature , remove any bug.
+        iii) Push those chanegs to your forked repository.
+        iv) Create a pull request to main branch.
      
