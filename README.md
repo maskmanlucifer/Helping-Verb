@@ -8,7 +8,7 @@
     4. Contributing in projects and asking for guidance from seniors.
     5. Job/Referral opportunity posting by Alumni's on discuss platform (Still under crafting......)
     
-   :zap: Link to live website <a href="https://helping-vern.herokuapp.com" target="_blank">here</a>.
+   :zap: Link to live website <a href="https://helping-verb.herokuapp.com" target="_blank">here</a>.
     
 ### :dart: Upcoming features: 
     Here is the list of the features on which you can work on if you want to contribute in helping-verb --
