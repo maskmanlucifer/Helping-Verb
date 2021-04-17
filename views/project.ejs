@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helping-Verb</title>
+    <!-- External CSS and Scripts -->
+    <link href="/img/hv.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/project.css">
+</head>
+<body> 
+  <nav class="navbar navbar-expand-lg  navbar-custom">
+    <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon my-toggler"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" >
+        <li class="nav-item" >
+          <a class="nav-link" href="./home">Home</a> 
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./geeks">Geeks</a>
+        </li>
+        <%if(!user){%>
+          <li class="nav-item">
+              <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./login" id="navbuttons">Login</a>
+          </li>
+          <%}else{%>
+          <li class="nav-item">
+              <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+          </li>
+          <%}%>
+    </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+        <%if(common==1){%>
+          <div class="forma">
+            <div class="Add">
+              <h1>&#x2622; Search By Year</h1> 
+            </div>
+            <form action="/projectfilter" method="POST" class="hi">
+              <input(type="hidden", name="_method", value="PUT")>
+              <input type="number" name="year" id="cd" placeholder="   Enter year" min="1999" max="2021" required>
+              <input type="submit" value="Search" id="bn">
+            </form>
+        </div><!-- forma -->
+        <%}%>
+        
+          <div class="inner-container container">
+              
+              <div class="row">
+                  <div class="section-header col-md-12" class="s2" style="text-align: center; color: #F7DC6F;font-weight:bold;">
+                      <%if(user){%>
+                      <div>
+                          <span style="border-radius:15px;padding: 8px;background-color: yellow;"><a class="sm" href="./addproject" style="text-decoration: none;color: #c3073f;">Add Project</a></span>&nbsp;&nbsp;&nbsp;
+                          <%if(onbranch==1){%>
+                            
+                          <span style="border-radius:15px;padding: 8px;background-color: yellow;"><a class="sm" href="./myproject" style="text-decoration: none;color: #c3073f;">My Projects</a></span>&nbsp;&nbsp;&nbsp;
+                          <%} else { %>
+                            <span style="border-radius:15px;padding: 8px;background-color: yellow;"><a class="sm" href="./project" style="text-decoration: none;color: #c3073f;">All Projects</a></span>&nbsp;&nbsp;&nbsp;
+                          <%}%>
+                      </div>
+                      <%}%>
+                  </div> <!-- /.section-header -->
+              </div> <!-- /.row -->
+              <br>
+              <%if(data.length==0){%>
+                <div class="pic">
+                  <img src="/img/error-3.jpg" alt="1st" style="width:100%;min-height: 80%;margin-bottom: 3%;border-radius: 15px;">
+                </div>
+             <%}else{%>
+              <div class="row">
+                <%for(let i=0;i<data.length;i++){%>
+                  <div class="col-md-6" style="margin-bottom: 15px;">
+                      <div class="box-content">
+                          <div class="service-content">
+                              <h4><%=data[i].pname%></h4>
+                              <h5><span style="color:#f69730;">Project-Owner : </span> <%=data[i].powner%> </h5>
+                              <p>Project Added in <span style="color:#c3073f;"><%=data[i].pdate%></span></p>
+                              <p><%=data[i].pdes%></p><br>
+                              <p >Project <span style="color:#f69730;"><a href="<%=data[i].plink%>" style="text-decoration: none;color: #f51b5c;">Github</a> </span> Repo Link.</p>
+                              <h5><span style="color:#f69730;">Tech stack : </span></h5>
+                              <div style="text-align: center;padding-bottom: 3px;">
+                                <%for(let k=0;k<data[i].pstack.length;k++){%>
+                                    <span class="sm" style="border-radius:5px;background-color: yellow;font-size: 15px;padding-left: 10px; padding-right: 10px;color:#c3073f;"><%=data[i].pstack[k]%></span>
+                                <%}%>
+                              </div>
+                              <%if(onbranch!=1){%>
+                              <div style="text-align: center;">
+                                <form id="deleteproject">
+                                  <input type="hidden" name="pname" value="<%=data[i].pname%>">
+                                  <input type="hidden" name="pusername" value="<%=data[i].pusername%>">
+                                  <button style="background-color: #283747;border: none;"><i class="fa fa-trash-o" style="font-size: 20px;color: #f69730;" aria-hidden="true"></i></button>
+                                </form>
+                              </div>
+                              <%}%>
+                              
+                          </div>
+                      </div> 
+                  </div>  
+                  <%}%>
+              </div> <!-- /.row -->
+              <%}%>
+          </div> <!-- /.inner-content -->
+      </div> <!-- /.content-wrapper -->                   
+  <!-- main content ends here -->
+  <!-- main content ends here -->
+ <a id="back2Top" title="Back to top" href="#">&#10148;</a>
+ <!-- Footer -->
+ <footer> 
+   <div> 
+     <ul>
+       <li class="fid">
+         Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+       </li>
+       <li class="fid">
+           <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+       </li>
+     </ul>
+   </div>
+ </footer>
+ <!-- Footer Ends-->
+ <script src="/js/main.js"></script>
+</body>
+</html>
+<script>
+  
+  document.getElementById("deleteproject").addEventListener('submit', async (e) => {
+    console.log("hi");
+    e.preventDefault();
+    const pname = document.getElementById("deleteproject").pname.value;
+    const pusername=document.getElementById("deleteproject").pusername.value;
+    console.log("hi");
+    try {
+      const res = await fetch('/deleteproject', { 
+        method: 'POST', 
+        body: JSON.stringify({pname,pusername }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      location.assign('/myproject');
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

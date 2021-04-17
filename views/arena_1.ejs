@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helping-Verb</title>
+    <!-- External CSS and Scripts -->
+    <link href="/img/hv.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/arena.css">
+  </head>
+  <body> 
+    <nav class="navbar navbar-expand-lg  navbar-custom">
+      <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon my-toggler"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" >
+          <li class="nav-item" >
+            <a class="nav-link" href="./home">Home</a> 
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./geeks">Geeks</a>
+          </li>
+          <%if(!user){%>
+            <li class="nav-item">
+                <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./login" id="navbuttons">Login</a>
+            </li>
+            <%}else{%>
+            <li class="nav-item">
+                <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+            </li>
+            <%}%>
+      </ul>
+      </div>
+    </nav>
+    <div class="main0">
+        <div class="welcome">
+          <span>Welcome to the Arena of <%=arenaName%></span>
+        </div>
+            <%if(data.length==0){%>
+               <div class="pic">
+                 <img src="/img/error.jpg" alt="1st" style="width:90%;margin-left: 5%;min-height: 80%;margin-bottom: 3%;border-radius: 15px;">
+               </div>
+            <%}else{%>
+               <div class="container" style="margin-top: 25px; margin-bottom: 25px;">
+                <%for(let i=0;i<data.length;i+=4){%>
+                  <div class="row">
+                    <%for(let j=i;j<Math.min(i+4,data.length);j++){%>
+                    <div class="col-md-3 col-sm-6">
+                      <div class="card">
+                          <%if(arenaName=="Newbies"){%>
+                            <img src="https://avatars.dicebear.com/api/bottts/<%=data[j].name%>.svg" alt="1st" style="width:100%;">
+                          <%}%>
+                          <%if(arenaName=="Specialist"){%>
+                            <img src="https://avatars.dicebear.com/api/gridy/<%=data[j].name%>.svg" alt="1st" style="width:100%;">
+                          <%}%>
+                          <%if(arenaName=="Experts"){%>
+                            <img src="https://avatars.dicebear.com/api/bottts/<%=data[j].name%>.svg" alt="1st" style="width:100%;">
+                          <%}%>
+                          <%if(arenaName=="Masters"){%>
+                            <img src="https://avatars.dicebear.com/api/gridy/<%=data[j].name%>.svg" alt="1st" style="width:100%;">
+                          <%}%>
+                          <h3 style="padding-top:5px;"><%=data[j].name%></h3>
+                          <div class="container">
+                            <p style="padding:5px; border-radius:7px;background-color: #283747; color:rgb(243, 243, 72);" >Skills</p>
+                            <div class="row">
+                               <div class="col">
+                                 <ul style="list-style: none;">
+                                    <%for(let k=0;k<4;k++){%>
+                                    <%if(data[j].skills.length>=k+1){%>
+                                    <li><%=data[j].skills[k]%></li>
+                                    <%} else { %>
+                                    <li>-</li>
+                                    <%}%>
+                                    <%}%>
+                                 </ul>
+                               </div><!-- col -->
+                               <div class="col">
+                                <ul style="list-style: none;">
+                                    <%for(let k=4;k<8;k++){%>
+                                    <%if(data[j].skills.length>=k+1){%>
+                                    <li><%=data[j].skills[k]%></li>
+                                    <%} else { %>
+                                    <li>-</li>
+                                    <%}%>
+                                    <%}%>
+                                </ul>  
+                               </div><!-- col -->
+                            </div><!-- row -->
+                            
+                          </div><!-- container -->
+                          <div class="icons">
+                            <a href="<%=data[j].glink%>"><i class="fa fa-github"></i></a> 
+                            <a href="<%=data[j].clink%>"><i class="fa fa-link" ></i></a> 
+                          </div><!-- icons -->
+                    </div><!-- card -->
+                    </div><!-- col-md-3 col-sm-6 -->
+                    <%}%><!-- for j -->
+                  </div><!-- row -->
+                <%}%><!-- for i-->
+               </div><!-- container -->
+            <%}%><!-- else -->
+      </div><!-- main0 -->
+<!-- main content ends here -->
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<!-- Footer -->
+<footer> 
+  <div> 
+    <ul>
+      <li class="fid">
+        Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+      </li>
+      <li class="fid">
+          <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- Footer Ends-->
+<script src="/js/main.js"></script>
+</body>
+</html>

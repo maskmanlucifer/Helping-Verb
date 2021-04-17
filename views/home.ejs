@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helping-Verb</title>
+    <!-- External CSS and Scripts -->
+    <link href="/img/hv.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="/css/home.css">
+
+</head>
+<body> 
+  <nav class="navbar navbar-expand-lg  navbar-custom">
+    <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon my-toggler"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" >
+        <li class="nav-item" >
+          <a class="nav-link" href="./home">Home</a> 
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./geeks">Geeks</a>
+        </li>
+        <%if(!user){%>
+        <li class="nav-item">
+            <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./login" id="navbuttons">Login</a>
+        </li>
+        <%}else{%>
+        <li class="nav-item">
+            <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+        </li>
+        <%}%>
+    </ul>
+    </div>
+  </nav>
+  <section class="banner">
+    <img src="/img/b.svg" alt="home">
+  </section>
+  <div class="main">
+    <div class="heading" >
+      <span id="bottom">&#x2623; Arena &#x2623;</span>
+    </div>
+      <div class="container"> 
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12"> 
+            <div class="card">
+              <img src="/img/1st.png" alt="1st" style="width:100%;border-radius: 15px;">
+              <h1 style="color:grey;">Newbies</h1>
+              <hr style="margin-left: 10%; margin-right: 10%; background-color: grey;">
+              <p>One day i will hack Google.</p>
+              <a class="button" style="text-decoration: none; color: yellow;"  href="./arena_1">Goto Arena</a>
+            </div><!-- card -->
+          </div><!-- col-md-3 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card">
+              <img src="/img/2nd.jpeg" alt="2nd" style="width:100%;border-radius: 15px;">
+              <h1 style="color:rgb(39, 207, 219);">Specialist</h1>
+              <hr style="margin-left: 10%; margin-right: 10%; background-color: grey;">
+              <p>Mini Noobs semi Pros.</p>
+              <a class="button" style="text-decoration: none; color: yellow;"  href="./arena_2">Goto Arena</a>
+            </div><!-- card -->
+          </div><!-- col-md-3 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card">
+              <img src="/img/3rd.jpeg" alt="3rd" style="width:100%;border-radius: 15px;">
+              <h1 style="color:rgb(88, 26, 231);">Experts</h1>
+              <hr style="margin-left: 10%; margin-right: 10%; background-color: grey;">
+              <p>Ask me anything.</p>
+              <a class="button" style="text-decoration: none; color: yellow;"  href="./arena_3">Goto Arena</a>
+            </div><!-- card -->
+          </div><!-- col-md-3 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="card">
+              <img src="/img/4th.png" alt="Final" style="width:100%;border-radius: 15px;">
+              <h1 style="color:rgb(230, 216, 28);">Masters</h1>
+              <hr style="margin-left: 10%; margin-right: 10%; background-color: grey;">
+              <p>Just chill boys take it easy.</p>
+              <a class="button" style="text-decoration: none; color: yellow;"  href="./arena_4">Goto Arena</a>
+            </div><!-- card -->
+          </div><!-- col-md-3 -->
+        </div><!-- row -->
+        </div><!-- container -->
+      <br><br>
+
+      <div class="boxes">
+            <div class="box-1" style="text-align: center;text-decoration:none;">
+                <img src="/img/5th.jpg" style="width:100%;border-radius: 15px;">
+                <a class="button" style="text-decoration: none; color: yellow;" href="./arena_5">Alumni-Arena</a>
+            </div>
+        </div><!-- boxes -->
+    </div><!-- Main Ends-->
+    
+    <!-- back to top toggle -->
+    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
+
+<!-- main content ends here -->
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<!-- Footer -->
+<footer> 
+  <div> 
+    <ul>
+      <li class="fid">
+        Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+      </li>
+      <li class="fid">
+          <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- Footer Ends-->
+<script src="/js/main.js"></script>
+</body>
+</html>

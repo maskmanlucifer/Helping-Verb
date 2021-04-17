@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helping-Verb</title>
+    <!-- External CSS and Scripts -->
+    <link href="/img/hv.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/signup.css">
+</head>
+<body> 
+  <nav class="navbar navbar-expand-lg  navbar-custom">
+    <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+    <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon my-toggler"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" >
+        <li class="nav-item" >
+          <a class="nav-link" href="./home">Home</a> 
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./geeks">Geeks</a>
+        </li>
+        <%if(!user){%>
+          <li class="nav-item">
+              <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./login" id="navbuttons">Login</a>
+          </li>
+          <%}else{%>
+          <li class="nav-item">
+              <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+          </li>
+          <%}%>
+    </ul>
+    </div>
+  </nav>
+	<!-- Header End-->
+    <div class="formbox">
+		<form action="/signup">
+			<h2>Sign up</h2>
+      <label for="username">Username</label>
+			<input type="text" name="username" required />
+      <div class="username error"></div>
+			<label for="email">Email</label>
+			<input type="text" name="email" required />
+			<div class="email error"></div>
+			<label for="password">Password</label>
+			<input type="password" name="password" required />
+			<div class="password error"></div>
+      <label for="confirm_password">Confirm password</label>
+			<input type="password" name="confirm_password" required />
+      <div class="confirm_password error"></div>
+			<button>Sign up</button>
+		  </form>
+	  </div>
+<!-- main content ends here -->
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<!-- Footer -->
+<footer> 
+  <div> 
+    <ul>
+      <li class="fid">
+        Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+      </li>
+      <li class="fid">
+          <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- Footer Ends-->
+<script src="/js/main.js"></script>
+</body>
+</html>
+<script>
+  const form = document.querySelector('form');
+  const emailError = document.querySelector('.email.error');
+  const passwordError = document.querySelector('.password.error');
+  const confirmpasswordError=document.querySelector('.confirm_password.error');
+  const usernameError=document.querySelector('.username.error');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // reset errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    confirmpasswordError.textContent='';
+    usernameError.textContent=''; 
+    // get values
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword=form.confirm_password.value;
+    const username=form.username.value;
+    if(password!=confirmPassword)
+    {
+         confirmpasswordError.textContent="Password not matched";
+    }
+    else
+    {
+    try { 
+      const res = await fetch('/signup', { 
+        method: 'POST', 
+        body: JSON.stringify({ email, password ,username}),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json(); 
+      if (data.errors) 
+      { 
+        emailError.textContent = data.errors.email;
+        passwordError.textContent = data.errors.password;
+        usernameError.textContent= data.errors.username;
+      }
+      if(data.user)
+      {
+          location.assign('/login');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
+  });
+</script>

@@ -1,2 +1,2 @@
 # Helping-Verb
-A website for coders and developers of IET Lucknow.
+This is a simple website which brings Developers and Coders of IET Lucknow together.

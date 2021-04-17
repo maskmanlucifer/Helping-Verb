@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Helping-Verb</title> 
+    <!-- for adding favicon -->
+    <link href="/img/hv.png" rel="icon">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- for fonts and icons in footer  -->
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- bootstrap external css include -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- jquery and ajax request -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+    <!-- local css file --> 
+    <link rel="stylesheet" href="/css/edit.css">
+  </head>
+  <body>
+      <!-- Header -->
+      <nav class="navbar navbar-expand-lg  navbar-custom">
+        <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon my-toggler"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" >
+            <li class="nav-item" >
+              <a class="nav-link" href="./home">Home</a> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./geeks">Geeks</a>
+            </li>
+            <%if(!user){%>
+            <li class="nav-item">
+                <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./login" id="navbuttons">Login</a>
+            </li>
+            <%}else{%>
+            <li class="nav-item">
+                <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+            </li>
+            <%}%>
+        </ul>
+        </div>
+      </nav>
+    <!-- Header End-->
+    <main>
+        <div class="container">
+          <div class="mini-box">
+            <h3><%=data.name%></h3>
+          </div>
+          <form id="namechange">
+          <div class="row">
+            <div class="col-25">
+              <label for="name">Enter new name : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="name" name="name" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Save">
+          </div><!-- row -->
+          </form> 
+        </div>
+          
+        <div class="container">
+          <div class="mini-box">
+            <h3><%=data.batch%></h3>
+          </div>
+          <form id="batchchange">
+          <div class="row">
+            <div class="col-25">
+              <label for="batch">Enter new batch : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="batch" name="batch" placeholder="20XX" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Save">
+          </div><!-- row -->
+        </form>
+        </div>
+
+        <div class="container">
+          <div class="mini-box">
+            <h3>Skills</h3>
+          </div>
+          <%if(data.skills.length>0){%>
+          <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <div style="margin-left: 25%;">
+            <%for(let k=0;k<data.skills.length;k++){%>
+              <span style="padding-left: 2%;padding-right: 2%;"><a style="border-radius:5px;text-decoration: none; color: grey; background-color: yellow;padding-left: 1%;padding-right: 1%;padding-top: 1%;padding-bottom: 1%;font-size: 14px;"><%=data.skills[k]%></a></span>
+            <%}%>
+          </div>
+          <%if(data.skills.length>0){%>
+            <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <form id="skillschange">
+          <div class="row">
+            <div class="col-25">
+              <label for="skills">Select Skills : </label>
+            </div>
+            <div class="col-md-3 col-lg-6">
+            <%for(let i=0;i<techs.length;i++){%>
+               <div class="form-check form-check-inline">
+               <input class="form-check-input" name="skills" type="checkbox" id="<%=techs[i]%>" value="<%=techs[i]%>">
+               <label class="form-check-label" for="<%=techs[i]%>"><%=techs[i]%></label>
+               </div>
+            <%}%>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Add">
+          </div><!-- row -->
+          </form>
+        </div>
+
+        <div class="container">
+          <div class="mini-box">
+            <h3>Jobs</h3>
+          </div>
+          <%if(data.jobs.length>0){%>
+            <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <div style="margin-left: 25%;">
+            <%for(let k=0;k<data.jobs.length;k++){%>
+              <span style="padding-left: 2%;padding-right: 2%;"><a style="border-radius:5px;text-decoration: none; color: grey; background-color: yellow;padding-left: 1%;padding-right: 1%;padding-top: 1%;padding-bottom: 1%;font-size: 14px;"><%=data.jobs[k]%></a></span>
+            <%}%>
+          </div>
+          <%if(data.jobs.length>0){%>
+            <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <form id="addjob">
+          <div class="row">
+            <div class="col-25">
+              <label for="njob">Enter company name :</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="njob" name="njob" placeholder="sharechat" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Add">
+          </div><!-- row -->
+          </form>
+
+          <form id="deletejob">
+          <div class="row">
+            <div class="col-25">
+              <label for="njob">Enter company name : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="njob" name="njob" placeholder="media.net" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Delete">
+          </div><!-- row -->
+          </form>
+        </div>
+
+        <div class="container">
+          <div class="mini-box">
+            <h3>Internships</h3>
+          </div>
+          <%if(data.interns.length>0){%>
+            <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <div style="margin-left: 25%;">
+            <%for(let k=0;k<data.interns.length;k++){%>
+              <span style="padding-left: 2%;padding-right: 2%;"><a style="border-radius:5px;text-decoration: none; color: grey; background-color: yellow;padding-left: 1%;padding-right: 1%;padding-top: 1%;padding-bottom: 1%;font-size: 14px;"><%=data.interns[k]%></a></span>
+            <%}%>
+          </div>
+          <%if(data.interns.length>0){%>
+            <hr style="background-color: grey; margin-left: 29%; margin-right: 29%;">
+          <%}%>
+          <form id="addintern">
+          <div class="row">
+            <div class="col-25">
+              <label for="nintern">Enter company name : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="nintern" name="nintern" placeholder="amazon" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Add">
+          </div><!-- row -->
+          </form>
+          <form id="deleteintern">
+          <div class="row">
+            <div class="col-25">
+              <label for="nintern">Enter company name : </label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="njob" name="nintern" placeholder="dunzo" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Delete">
+          </div><!-- row -->
+          </form>
+        </div>
+        <div class="container">
+          <div class="mini-box">
+            <h3>Links</h3>
+          </div>
+         <div style="text-align: center;">
+          <div class="icons">
+            <a href="<%=data.glink%>"><i class="fa fa-github"></i></a> 
+            <a href="<%=data.clink%>"><i class="fa fa-link" ></i></a> 
+          </div><!-- icons -->
+        </div>
+          <form id="glinkchange">
+          <div class="row">
+            <div class="col-25">
+              <label for="glink">Enter new Github link : </label>
+            </div>
+            <div class="col-75">
+              <input type="url" id="glink" name="glink" placeholder="www.github.com" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Update">
+          </div><!-- row -->
+        </form>
+        <form id="clinkchange">
+          <div class="row">
+            <div class="col-25">
+              <label for="clink">Enter new social link : </label>
+            </div>
+            <div class="col-75">
+              <input type="url" id="clink" name="clink" placeholder="www.hello.com" required>
+            </div>
+          </div>
+          <div class="row">
+            <input id="butt" type="submit" value="Update">
+          </div><!-- row -->
+        </form>
+        </div>
+
+        <div class="container">
+          <div class="mini-box">
+            <h3>Password change</h3>
+          </div>
+          <form id="changepassword">
+          <div class="row">
+            <div class="col-25">
+              <label for="pass">Enter new password : </label>
+            </div>
+            <div class="col-75">
+              <input type="password" id="pass" name="pass" placeholder="xxxxxx" minlength="6" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="cpass">Confirm  password : </label>
+            </div>
+            <div class="col-75">
+              <input type="password" id="cpass" name="cpass" placeholder="xxxxxx" minlength="6" required>
+            </div>
+          </div>
+          <div class="password error" style="margin-left: 15%;"></div>
+          <div class="row">
+            <input id="butt" type="submit" value="Save">
+          </div><!-- row -->
+        </form>
+        </div>
+      </main>
+      <a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<!-- Footer -->
+<footer> 
+  <div> 
+    <ul>
+      <li class="fid">
+        Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+      </li>
+      <li class="fid">
+          <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- Footer Ends-->
+<script src="/js/main.js"></script>
+</body>
+</html>
+<script>
+  
+  document.getElementById("namechange").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        const newname=document.getElementById("namechange").name.value;
+        console.log(newname);
+        const res = await fetch('/namechange', { 
+        method: 'POST', 
+        body: JSON.stringify({ newname }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("batchchange").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        const newbatch=document.getElementById("batchchange").batch.value;
+        
+        const res = await fetch('/batchchange', { 
+        method: 'POST', 
+        body: JSON.stringify({ newbatch }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("skillschange").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        console.log("hi");
+        const skills=document.getElementById("skillschange").skills;
+        let pstack=[];
+        for(let i=0;i<skills.length;i++)
+        {
+          let id=skills[i].value;
+          let x=document.getElementById(id).checked;
+          if(x)
+          {
+            pstack.push(skills[i].value);
+          }
+        }    
+        
+        const res = await fetch('/skillschange', { 
+        method: 'POST', 
+        body: JSON.stringify({ newskills:pstack }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("addjob").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const njob=document.getElementById("addjob").njob.value;
+        const res = await fetch('/addjob', { 
+        method: 'POST', 
+        body: JSON.stringify({ njob }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("deletejob").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const njob=document.getElementById("deletejob").njob.value;
+        const res = await fetch('/deletejob', { 
+        method: 'POST', 
+        body: JSON.stringify({ njob }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("addintern").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const nintern=document.getElementById("addintern").nintern.value;
+        const res = await fetch('/addintern', { 
+        method: 'POST', 
+        body: JSON.stringify({ nintern }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("deleteintern").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const nintern=document.getElementById("deleteintern").nintern.value;
+        const res = await fetch('/deleteintern', { 
+        method: 'POST', 
+        body: JSON.stringify({ nintern }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("glinkchange").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const newglink=document.getElementById("glinkchange").glink.value;
+        const res = await fetch('/glinkchange', { 
+        method: 'POST', 
+        body: JSON.stringify({ newglink }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("clinkchange").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        
+        const newclink=document.getElementById("clinkchange").clink.value;
+        const res = await fetch('/clinkchange', { 
+        method: 'POST', 
+        body: JSON.stringify({ newclink }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      
+      // const data = await res.json(); 
+      
+          location.assign('/profile');
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+
+  document.getElementById("changepassword").addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    try {
+        
+        const newpassword=document.getElementById("changepassword").pass.value;
+        const newcpassword=document.getElementById("changepassword").cpass.value;
+        const Error = document.querySelector('.password.error');
+        Error.textContent='';
+        if(newcpassword!=newpassword)
+        {
+            Error.textContent="password not matched";
+        }
+        else
+        {
+          const res = await fetch('/changepassword', { 
+            method: 'POST', 
+            body: JSON.stringify({ newpassword }),
+            headers: {'Content-Type': 'application/json'}
+          });
+          
+          // const data = await res.json(); 
+          
+              location.assign('/profile');
+        }
+        
+      
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

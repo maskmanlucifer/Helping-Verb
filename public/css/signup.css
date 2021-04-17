@@ -1,0 +1,278 @@
+html{
+  height: 100%;
+}
+body, ul, li, h1, h2, a
+{
+  margin: 0;
+  padding: 0;
+}  
+ul.no-bullets {
+  list-style-type: none; 
+}
+body{
+  background-color: #1a1a1d;
+  font-family: 'Cabin Sketch', cursive;
+  font-family: 'Metal Mania', cursive;
+  font-family: 'Strait', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+
+.navbar-nav > li{
+margin-left: 5px;
+margin-right: 5px;
+font-size: 20px;
+font-family: 'Cabin Sketch', cursive;
+font-family: 'Metal Mania', cursive;
+font-family: 'Strait', sans-serif;
+}
+
+.navbar-nav .nav-item .nav-link 
+{
+color:yellow;
+text-align: center;
+}
+
+.custom-toggler.navbar-toggler
+{  
+border-color: yellow;
+color:white;
+} 
+
+.custom-toggler .navbar-toggler-icon 
+{ 
+background-image: url( 
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 128, 0, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+} 
+
+.navbar-custom { 
+  background-color: #000;  
+} 
+
+
+#navbuttons{
+    padding: 5px;
+    background-color: #c3073f;
+    border-radius: 18px;
+}
+
+@media screen and (max-width:990px)
+{
+  .navbar-nav >li
+  {
+    font-size: 19px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+  #navspan{
+    font-size: 19px;
+    
+}
+}
+
+@media screen and (max-width:500px)
+{
+    .navbar-nav > li
+    {
+      font-size: 18px;
+    }
+    #navspan{
+        font-size: 18px;
+    }
+}
+ 
+
+  #back2Top 
+  {
+    width: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    cursor: pointer;
+    -moz-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    background-color: yellow;
+    color: #555;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 7px;
+  }
+
+  #back2Top:hover 
+  {
+    color: #000;
+  }
+
+
+   footer
+   {
+    background:#000;
+    padding: 9px;
+    padding-bottom: 4px;
+    font-size: 17px;
+    text-align: center;
+    color:grey;
+    margin-top: auto;
+   }
+   .fid
+   {
+     padding:6px;
+   }
+   #copy 
+   {
+     color:yellow;
+   }
+ 
+@media screen and (max-width:600px){
+ 
+ #back2Top {
+   width: 27px;
+   line-height: 27px;
+   position: fixed;
+   bottom: 50px;
+   right: 0;
+   font-size: 28px;
+ }
+}
+@media screen and (max-width:572px){
+ #back2Top {
+   width: 30px;
+   line-height: 30px;
+   position: fixed;
+   bottom: 50px;
+   right: 0;
+   font-size: 25px;
+ }
+ 
+}
+@media screen and (max-width:427px){
+ 
+ #back2Top {
+   width: 20px;
+   line-height: 20px;
+   position: fixed;
+   bottom: 50px;
+   right: 0;
+   font-size: 20px;
+ }
+ .navbar-nav .nav-item .nav-link {
+   font-size: 18px;
+   }
+ footer{
+   font-size: 16px;
+ }
+ 
+}
+@media screen and (max-width:382px){
+ 
+ footer{
+   font-size: 14px;
+ }
+ 
+ #back2Top {
+   width: 18px;
+   line-height: 18px;
+   position: fixed;
+   bottom: 50px;
+   right: 0;
+   font-size: 20px;
+ }
+
+/* form css */
+}
+.formbox{
+  margin-top: 41px;
+  margin-bottom: 41px;
+  color: #ee940d;
+}
+.btn{
+  border-radius: 36px;
+  background:#c3073f;
+}
+form h2{
+  font-size: 2.0em;
+  font-weight: 900;
+  margin-bottom: 40px;
+  text-align: center;
+}
+form{
+  width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: white;
+}
+input{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid rgb(87, 86, 86);
+  font-size: 1em;
+  width: 100%;
+}
+label{
+  display: block;
+  margin: 20px 0 10px;
+}
+button{
+  margin-top: 30px;
+  border-radius: 36px;
+  background: #ee4d0d;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  color: yellow;
+}
+.error{
+  color: #b117a4;
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+@media screen and (max-width:450px){
+ 
+  form h2{
+    font-size: 1.7em;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+  form{
+    width: 300px;
+  }
+  .formbox{
+    margin-bottom: 47px;
+  }
+  label{
+    font-size: 15px;
+  }
+ }
+
+ @media screen and (max-width:360px){
+ 
+  form h2{
+    font-size: 1.3em;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+  form{
+    width: 280px;
+  }
+  label{
+    font-size: 13px;
+  }
+ }

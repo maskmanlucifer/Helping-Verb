@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Helping-Verb</title>
+    <!-- External CSS and Scripts -->
+    <link href="/img/hv.png" rel="icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Metal+Mania&family=Strait&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.0/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/edit.css">
+  </head>
+  <body> 
+    <nav class="navbar navbar-expand-lg  navbar-custom">
+      <span id="navspan"><a href="./home"><img src="/img/hv.png"></a></span>
+      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon my-toggler"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" >
+          <li class="nav-item" >
+            <a class="nav-link" href="./home">Home</a> 
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./geeks">Geeks</a>
+          </li>
+          <%if(!user){%>
+            <li class="nav-item">
+                <a class="nav-link" href="./signup" id="navbuttons" >Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./login" id="navbuttons">Login</a>
+            </li>
+            <%}else{%>
+            <li class="nav-item">
+                <a class="nav-link" href="./profile" id="navbuttons" >My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./logout" id="navbuttons">Logout</a>
+            </li>
+            <%}%>
+      </ul>
+      </div>
+    </nav>
+    <main>
+      
+        <div class="editprofile">
+            <div class="addskill">
+              <div style="text-align: center; padding-top: 20px;">
+                <span style="border-radius:15px;padding: 8px;background-color: yellow;"><a class="sm" href="./myproject" style="text-decoration: none;color: #c3073f;">My Project</a></span>&nbsp;&nbsp;&nbsp;
+                <span style="border-radius:15px;padding: 8px;background-color: yellow;"><a class="sm" href="./project" style="text-decoration: none;color: #c3073f;">All Project</a></span>&nbsp;&nbsp;&nbsp;
+              </div>
+               <div class="container">
+                <form>
+                  <div class="row">
+                  <div class="col-25">
+                    <label for="pname">Project Name : </label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="pname" name="pname" placeholder="Helping-Verb" required>
+                  </div>
+                  <div class="pname error" style="padding-left: 15%;"></div>
+                  </div><!-- row -->
+                <div class="row">
+                  <div class="col-25">
+                    <label for="pdes">Short-Description : </label>
+                  </div>
+                  <div class="col-75">
+                    <textarea row="3" id="pdes" name="pdes"></textarea> 
+                  </div>
+                </div><!-- row -->
+                <div class="row">
+                  <div class="col-25">
+                    <label for="powner">Owner Name : </label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="powner" name="powner" placeholder="Bot" required>
+                  </div>
+                </div><!-- row -->
+                <div class="row">
+                  <div class="col-25">
+                    <label for="ts">Tech-Stack : </label>
+                  </div>
+                  <div class="col-md-3 col-lg-6">
+                  <%for(let i=0;i<techs.length;i++){%>
+                     <div class="form-check form-check-inline">
+                     <input class="form-check-input" name="ts" type="checkbox" id="<%=techs[i]%>" value="<%=techs[i]%>">
+                     <label class="form-check-label" for="<%=techs[i]%>"><%=techs[i]%></label>
+                     </div>
+                  <%}%>
+                  </div><!-- col-md-3 col-lg-6 -->
+                </div><!-- row -->
+                <div class="row">
+                  <div class="col-25">
+                    <label for="plink">Github link : </label>
+                  </div>
+                  <div class="col-75">
+                    <input type="url" id="plink" name="plink" placeholder="Git hub link of project" required>
+                  </div>
+                </div><!-- row -->
+                  <div class="row">
+                    <input id="butt" type="submit" value="Add">
+                  </div><!-- row -->
+                </form><!-- form -->
+              </div><!-- container -->
+            </div><!-- addskill -->
+        </div><!-- editprofile -->
+    </main>
+<!-- main content ends here -->
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+<!-- Footer -->
+<footer> 
+  <div> 
+    <ul>
+      <li class="fid">
+        Crafted with <i class="fa fa-code" style="font-size:14px;color:yellow;"></i> + </span> <i class="fa fa-coffee" style="font-size:14px;color:yellow;"></i> and <i class="fa fa-heart" style="font-size:14px;color:yellow;"></i> <span> At <span><a style="text-decoration: none; color:#c3073f;" href="https://github.com/luciferlabs">luciferlabs</a></span>
+      </li>
+      <li class="fid">
+          <span id="copy">&copy;</span><span> Copyright <span style="color:yellow;">2020 </span>Helping-Verb</span>
+      </li>
+    </ul>
+  </div>
+</footer>
+<!-- Footer Ends-->
+<script src="/js/main.js"></script>
+</body>
+</html>
+<script>
+  const form = document.querySelector('form');
+  const pnameError = document.querySelector('.pname.error');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pname = form.pname.value;
+    const pdes = form.pdes.value;
+    const powner = form.powner.value;
+    const plink = form.plink.value;
+    const ts=form.ts;
+    pnameError.textContent='';
+    let pstack=[];
+    for(let i=0;i<ts.length;i++)
+    {
+      let id=ts[i].value;
+      let x=document.getElementById(id).checked;
+      if(x)
+      {
+         pstack.push(ts[i].value);
+      }
+    }    
+    try {
+       const res=await fetch('/addproject', { 
+        method: 'POST', 
+        body: JSON.stringify({ pname, pdes ,powner,plink,pstack}),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      
+      if(data.errors)
+      {
+         pnameError.textContent=data.errors.pname;
+         console.log("yes");
+      }
+      else
+      {
+         location.assign('/addproject');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  
+  });
+</script>
